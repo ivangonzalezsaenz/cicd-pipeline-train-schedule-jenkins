@@ -1,3 +1,6 @@
+import org.gradle.api.file.Directory
+import org.gradle.api.provider.Provider
+
 plugins {
   //inlude the nodeJS plugin to execute nodejs and npm tasks
   id "com.moowork.node" version "1.2.0"
@@ -23,8 +26,8 @@ task zip(type: Zip) {
 		include "routes/**"
 		include "views/**"
 	}
-	destinationDir(file("dist"))
-	baseName "trainSchedule"
+	destinationDirectory = layout.buildDirectory.dir("dist")
+	archiveBaseName = "trainSchedule"
 }
 
 //declare task dependencies
